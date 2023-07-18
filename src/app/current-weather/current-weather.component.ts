@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent {
+  
+
 
 }
