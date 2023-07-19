@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ICurrentWeather } from '../icurrent-weather';
+import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-current-weather',
@@ -8,18 +9,19 @@ import { ICurrentWeather } from '../icurrent-weather';
 })
 export class CurrentWeatherComponent {
   current: ICurrentWeather
-  constructor()
+  constructor(private weaterService: WeatherService)
   {
     this.current =
     {
-      city: 'DC',
-      country: 'US',
+      city: '',
+      country: '',
       date: new Date(),
       image: '',
-      temperature: 98,
-      description: 'Hot Humid'
+      temperature: 0,
+      description: ''
     }
-  }
+    this.weaterService.getCurrentWeather('Richmond','US').subscribe(data => this.current = data)
 
+  }
 
 }
